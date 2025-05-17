@@ -7,6 +7,8 @@ When the project is completed and successfully ran, a route-overlayed map will b
 
 <img src="instruction_images/map_routed.png" width="50%" alt="Map showing the plotted route from 10, 10 to 90, 90"/>
 
+_Start: 10, 10 - End: 90, 90_
+
 ## Compiling and Running the Project
 As you make changes to the source code, the build will **not** automatically update. To create updated executables, follow Steps 2 - 4. 
 
