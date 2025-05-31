@@ -98,9 +98,9 @@ To ensure the program works as intentended, we need to first run unit tests. You
 
 **Expected Results**
 * **Incomplete project:** `RoutePlannerTest.TestCalculateHValue` will fail, and all other tests will pass.
-* **Successfully completed project:** All tests will pass, as shown in the screenshot below (your terminal may or may not show color - either is fine)
-
 <img alt="RoutePlannerTest.TestCalculateHValue unit test failing during an incomplete project"  src="instruction_images/test_partially_unsuccessful.png" width="50%" alt="Screenshot of terminal showing all tests ran successfully"/>
+
+* **Successfully completed project:** All tests will pass, as shown in the screenshot below (your terminal may or may not show color - either is fine)
 <img alt="All unit tests passing after the project's been successfully completed."  src="instruction_images/test_successful.png" width="50%" alt="Screenshot of terminal showing all tests ran successfully"/>
 
 #### Unit Tests Explained
