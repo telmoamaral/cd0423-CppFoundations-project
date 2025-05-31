@@ -53,9 +53,7 @@ int main(int argc, const char **argv)
             osm_data = std::move(*data);
     }
     
-    // TODO 1: Declare floats `start_x`, `start_y`, `end_x`, and `end_y` and get
-    // user input for these values using std::cin. Pass the user input to the
-    // RoutePlanner object below in place of 10, 10, 90, 90.
+
 
  
     // Build Model.
@@ -64,8 +62,10 @@ int main(int argc, const char **argv)
     // For testing:
     // RouteModel model{osm_data, 10, 10, 90, 90};
 
-    // Perform search and render results.
-    RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
+    // TODO 1: Declare floats `start_x`, `start_y`, `end_x`, and `end_y` and get
+    // user input for these values using std::cin. Pass the user input to the
+    // RoutePlanner object below in place of 10, 10, 90, 90.
+    RoutePlanner route_planner{model, 10, 10, 90, 90};
     route_planner.AStarSearch();
     std::cout << "Distance: " << route_planner.GetDistance() << " meters. \n";
     
