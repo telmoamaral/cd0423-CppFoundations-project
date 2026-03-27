@@ -28,6 +28,21 @@ static std::optional<std::vector<std::byte>> ReadFile(const std::string &path)
     return std::move(contents);
 }
 
+static float getValidInput(){
+    bool valid = false;
+    float input = 0;
+    while (!valid){
+        std::cin >> input;
+        if (input >= 0 && input <= 100){
+            valid = true;
+        }
+        else{
+            std::cout << "Input out of range (0 to 100). Please try again: ";
+        }
+    }
+    return input;
+}
+
 int main(int argc, const char **argv)
 {    
     std::string osm_data_file = "";
@@ -75,13 +90,13 @@ int main(int argc, const char **argv)
     }
     else{
         std::cout << "Please enter a start x coordinate between 0 and 100: ";
-        std::cin >> start_x;
+        start_x = getValidInput();
         std::cout << "Please enter a start y coordinate between 0 and 100: ";
-        std::cin >> start_y;
+        start_y = getValidInput();
         std::cout << "Please enter an end x coordinate between 0 and 100: ";
-        std::cin >> end_x;
+        end_x = getValidInput();
         std::cout << "Please enter an end y coordinate between 0 and 100: ";
-        std::cin >> end_y;
+        end_y = getValidInput();
     }
     
     RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
