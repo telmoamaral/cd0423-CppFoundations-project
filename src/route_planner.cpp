@@ -54,7 +54,18 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
 // - Return the pointer.
 
 RouteModel::Node *RoutePlanner::NextNode() {
-
+    struct{
+        bool operator()(RouteModel::Node* p_node_a, RouteModel::Node* p_node_b) const {
+            return p_node_a->h_value + p_node_a->g_value > p_node_b->h_value + p_node_b->g_value;
+        }
+    } comp;
+    for (RouteModel::Node* node : open_list){
+        std::cout << "debug bef h + g = " << node->h_value + node->g_value << std::endl;
+    }
+    std::sort(open_list.begin(), open_list.end(), comp);
+    for (RouteModel::Node* node : open_list){
+        std::cout << "debug aft h + g = " << node->h_value + node->g_value << std::endl;
+    }
 }
 
 
