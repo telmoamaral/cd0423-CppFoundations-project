@@ -10,8 +10,8 @@ RoutePlanner::RoutePlanner(RouteModel &model, float start_x, float start_y, floa
 
     // TODO 2: Use the m_Model.FindClosestNode method to find the closest nodes to the starting and ending coordinates.
     // Store the nodes you find in the RoutePlanner's start_node and end_node attributes.
-    RouteModel::Node& closest_to_start = model.FindClosestNode(start_x, start_y);
-    RouteModel::Node& closest_to_end = model.FindClosestNode(end_x, end_y);
+    RouteModel::Node& closest_to_start = m_Model.FindClosestNode(start_x, start_y);
+    RouteModel::Node& closest_to_end = m_Model.FindClosestNode(end_x, end_y);
     start_node = &closest_to_start;
     end_node = &closest_to_end;
 }
@@ -38,7 +38,7 @@ void RoutePlanner::AddNeighbors(RouteModel::Node *current_node) {
     current_node->FindNeighbors();
     for (RouteModel::Node* p_neighbor : current_node->neighbors){
         p_neighbor->parent = current_node;
-        p_neighbor->g_value += current_node->distance(*p_neighbor);
+        p_neighbor->g_value = current_node->g_value + current_node->distance(*p_neighbor);
         p_neighbor->h_value = CalculateHValue(p_neighbor);
         open_list.push_back(p_neighbor);
         p_neighbor->visited = true;
@@ -64,7 +64,6 @@ RouteModel::Node *RoutePlanner::NextNode() {
     open_list.pop_back();
     return p_best_node;
 }
-
 
 // TODO 6: Complete this method to return the final path found from your A* search.
 // Tips:
@@ -104,6 +103,8 @@ void RoutePlanner::AStarSearch() {
     RouteModel::Node *current_node = nullptr;
 
     // TODO: Implement your solution here.
+    open_list.push_back(start_node);
+    start_node->visited = true;
     current_node = start_node;
     while (current_node != end_node){
         AddNeighbors(current_node);
